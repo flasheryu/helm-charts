@@ -15,7 +15,7 @@ roles:
   remote_cluster_client: "true"
 # ml: "true" # ml is not availble with elasticsearch-oss
 
-replicas: 1
+replicas: 2
 minimumMasterNodes: 1
 
 esMajorVersion: ""
@@ -120,7 +120,7 @@ volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
   resources:
     requests:
-      storage: 100Gi
+      storage: 500Gi
   storageClassName: "premium-rwo"
 
 rbac:
@@ -254,8 +254,12 @@ clusterHealthCheckParams: ""
 schedulerName: ""
 
 imagePullSecrets: []
-nodeSelector: {}
-tolerations: []
+nodeSelector: 
+  cloud.google.com/gke-nodepool: middleware-pool
+tolerations: 
+  - key: "woo_node_pool"
+    value: "middleware"
+    operator: "Equal"
 
 # Enabling this will publically expose your Elasticsearch instance.
 # Only enable this if you have security enabled on your cluster
