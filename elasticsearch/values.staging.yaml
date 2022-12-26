@@ -92,15 +92,15 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-esJavaOpts: "-Xmx8g -Xms8g"
+esJavaOpts: "-Xmx3g -Xms3g"
 
 resources:
   requests:
     cpu: "1000m"
-    memory: "12Gi"
+    memory: "5Gi"
   limits:
     cpu: "4000m"
-    memory: "12Gi"
+    memory: "5Gi"
 
 initResources:
   limits:
@@ -124,7 +124,7 @@ volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
   resources:
     requests:
-      storage: 1Ti
+      storage: 500Gi
   storageClassName: "premium-rwo"
 
 rbac:
